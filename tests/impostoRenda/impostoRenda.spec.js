@@ -19,6 +19,14 @@ describe('Calcula imposto de renda', () => {
   it('alíquota deverá ser 27.5 quanto valor é entre 4.271,60', () => {
     calculaImposto(4271.60).should.be.equal(27.5);
   });
+  it('deverá jogar erro quando for menor que 0', () => {
+    try {
+      calculaImposto(-1);
+    } catch (e) {
+      e.message.should.be.equal('Valor deve ser acima de 0');
+    }
+  });
+
 
 });
 

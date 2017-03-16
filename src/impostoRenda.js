@@ -1,4 +1,6 @@
 export default function calculaImposto(valor) {
+  if (valor < 0) throw new Error('Valor deve ser acima de 0');
+
   if (valor < 1710.79) {
     return 0;
   }
