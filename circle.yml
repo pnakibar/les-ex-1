@@ -1,0 +1,38 @@
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  node:
+    version: 6
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - mkdir -p ~/.yarn ~/.yarn-cache
+    - rm -Rf node_modules
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+  cache_directories:
+    - "~/.yarn"
+    - "~/.yarn-cache"
+  override:
+    - yarn
+
+test:
+  override:
+    - yarn lint -- -f junit -o $CIRCLE_TEST_REPORTS/reports/eslint.xml
+    - yarn test -- -R mocha-junit-reporter:
+        environment:
+          MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/mocha.xml
+
+deployment:
+  development:
+    branch: dev
+    heroku:
+      appname: sna-api-dev
+
+  production:
+    branch: master
+    commands:
+      - docker build -t $IMAGE:production .
+      - eval $(aws ecr get-login --region us-east-1) && docker push $IMAGE:production
+      - yarn run -- ecs-deploy
