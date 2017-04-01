@@ -1,9 +1,7 @@
 {
-  "name": "sna-api",
+  "name": "les-ex-1",
   "version": "0.2.0",
   "main": "src/index.js",
-  "repository": "git@github.com:gettyio/sna-api.git",
-  "author": "Phillipe Lopes <phillipe@getty.io>",
   "license": "ISC",
   "scripts": {
     "start": "node dist/index.js",
@@ -37,24 +35,9 @@
     "babel-istanbul": "^0.12.2",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-runtime": "^6.23.0",
-    "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
-    "body-parser": "^1.17.1",
-    "boom": "^4.2.0",
-    "cors": "^2.8.1",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.2",
-    "express-jwt": "^5.1.0",
-    "express-unless": "^0.3.0",
-    "express-validation": "^1.0.1",
     "istanbul": "^0.4.5",
     "istanbul-babel": "^1.0.1",
-    "joi": "^9.0.4",
-    "jsonwebtoken": "^7.3.0",
-    "lodash": "^4.17.4",
-    "mongoose": "^4.8.6",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "user-management-service": "^0.0.9"
+    "lodash": "^4.17.4"
   }
 }
